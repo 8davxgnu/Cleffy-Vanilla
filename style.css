@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+
+  color: #fbf5ef;
+
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(39, 39, 68);
+  
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------------------------------------------------------- */
+
+.nav-bar {
+  background-color: #494d7e;
+
+  border-bottom: rgba(198, 159, 165, 0.75) 1px solid;
+
+  display: flex;
+  justify-content: center;
+  /* align-items: stretch; stretch: height determined by tallest item in the list in this case b/c cross axis is vertical here */
+
+
+}
+
+
+
+.nav-list {
+  background-color: #8b6d9c;
+
+  
+
+  font-weight: 700;
+  
+  padding: 5px 0px;
+  
+}
+
+.nav-list li {
+  min-width: 3rem;
+  min-height: 2rem;
+  
+  
+  list-style-type: none; /* Remove bullet points */
+
+
+  display: inline-block;
+
+
+  text-align: center;
+
+  padding: 5px;
+}
+
+.nav-list li a {
+  text-decoration: none;
+
+  font-size: 24px; /*DC ~ font-size applied here b/c THIS, inside the <a> tag, is where the actual "text" is within nav-list*/
+  font-family: monospace;
+
+}
+
+.nav-list li a:hover {
+  text-decoration: underline 4px;
+  text-decoration-color: #f2d3ab;
+}
+
+/* ---------------------------------------------------------- */
+.wrapper {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.card {
+  background-color: #494d7e;
+
+  width: 50rem;
+  height: 25rem;
+
+  font-size: 20px;
+  font-family: monospace;
+}
+
+.music-lines {
+  background-color: #fbf5ef;
+
+}
+
+.music-lines span {
+  color: black;
+}
