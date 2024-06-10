@@ -11,10 +11,12 @@
 body {
   background-color: rgb(39, 39, 68);
   
+  overflow-x: auto;
 }
 
 body::-webkit-scrollbar {
-  display: none;
+   display: none; /* or set [width: 0] */
+  
 }
 
 /* -------------------------------------------------------- */
@@ -28,7 +30,9 @@ body::-webkit-scrollbar {
   justify-content: center;
   /* align-items: stretch; stretch: height determined by tallest item in the list in this case b/c cross axis is vertical here */
 
-
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 
@@ -75,12 +79,14 @@ body::-webkit-scrollbar {
 
 /* ---------------------------------------------------------- */
 .wrapper {
-  height: 100vh;
+  min-height: 50rem; /*DC~ use min-height instead of height so that it can still continue fitting in content that overflows within itself*/
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  
 }
 
 .card {
@@ -91,13 +97,65 @@ body::-webkit-scrollbar {
 
   font-size: 20px;
   font-family: monospace;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  position: relative; /*Set card position relative so that h1 can be positioned 
+                        RELATIVE TO CARD and NOT to next nearest positioned element. 
+                        Also notice we dont use left, right, top, bot properties so we 
+                        dont actually explicitly position .card. We are positioning it 
+                        only as a relative to position h1.*/
+}
+
+.card h1 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  
+}
+/* --------------------------------------------------------------------------------- */
+
+.music-lines-container {
+  background-color: #fbf5ef;
+
+  width: 46rem;
+  height: 21rem;
+  
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+
 }
 
 .music-lines {
-  background-color: #fbf5ef;
+  background-color: rgba(198, 159, 165, 0.197);
 
+  width: inherit;
+  height: 17rem;
+  
+
+  
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  
+  
 }
 
-.music-lines span {
-  color: black;
+.line {
+  background-color: black;
+  width: inherit;
+  height: 1px;
+
+  /* position: relative;
+  left: 0px;
+  right: 0px; */
 }
