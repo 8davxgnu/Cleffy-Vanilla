@@ -11,6 +11,7 @@
 
 :root {
   --note-dimension: 2rem;
+  --note-spacing: 4;
 }
 
 body {
@@ -166,6 +167,20 @@ body {
 
   position: relative;
 }
+
+
+.currentNote {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: calc(4 * var(--note-dimension)); /* IMPORTANT TO REMEMBER: It is FOUR times the diameter of a note! */
+  height: inherit;
+
+
+  position: absolute;
+  transform: translate(calc(var(--note-spacing) * 2.5rem - 2 * (var(--note-dimension)) + var(--note-dimension) / 2), 0); 
+
+}
+
+
 
 
 /* 

@@ -8,6 +8,8 @@ const buttonD = document.getElementById("noteD");
 const buttonE = document.getElementById("noteE");
 const buttonF = document.getElementById("noteF");
 const buttonG = document.getElementById("noteG");
+
+
 // -----------------------------------------------------------------------------------------------------------
 
 /* 
@@ -67,7 +69,6 @@ const note_spacing = 4;
 // -----------------------------------------------------------------------------------------------------------
 // Returns: Array with answers as Note Chars
 function renderNotes() {
-  
   // Generate note nums:
   note1_rawVal = Math.floor(Math.random() * 13);
   note2_rawVal = Math.floor(Math.random() * 13);
@@ -90,8 +91,6 @@ function renderNotes() {
 
   // Render and translate the Notes on the music lines:
   for (let noteVal in noteKey) {
-
-
     if (noteVal == num1_noteVal) {
       console.log(`Raw Note1 Value: ${note1_rawVal} | Note1: ${noteKey[noteVal]}`);
 
@@ -106,11 +105,11 @@ function renderNotes() {
       newNote.className = 'note';
       newNote.id = 'note1';
       
-      if (note1_rawVal % 2 == 0) {
+      if (note1_rawVal % 2 == 0) { // IF LINE NOTE
         newNote.style.transform = `translate(calc(${note_spacing} * 2.5rem), calc(1px - (33px/2) - (${(num_of_spaces)} * 32px) - (${num_of_lines} * 1px))`;
         baseMusicLine.appendChild(newNote);
       }
-      else {
+      else { // IF SPACE NOTE
         newNote.style.transform = `translate(calc(${note_spacing} * 2.5rem), calc(1px - (33px/2) - (${(num_of_spaces)} * 32px) - (${num_of_lines} * 1px) + (16px - 1px))`;
         baseMusicLine.appendChild(newNote);
       }
@@ -210,7 +209,6 @@ function trebleStart() {
 
 
 trebleStart();
-
 
 
 
