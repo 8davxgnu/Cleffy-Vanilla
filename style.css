@@ -173,7 +173,7 @@ body {
   The initial 1px shift is to set note in correct default position before future translations
 */
 .note {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 1);
   position: absolute;
   /* transform: translate(0px, calc(1px - (33px/2) - (0 * 32px) - (0 * 1px)));  */
   
@@ -218,7 +218,7 @@ body {
 
   text-align: center;
   font-weight: bold;
-  
+
   cursor: pointer;
 }
 
