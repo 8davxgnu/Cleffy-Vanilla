@@ -125,6 +125,21 @@ body {
 
   align-self: flex-start;
   padding: 5px 0px 10px 5px;
+
+  
+  
+}
+
+.card h1::after {
+  content: "!";
+  color: #8b6d9c;
+  opacity: 0;
+  
+}
+
+.card h1:hover::after {
+  opacity: 1;
+  transition: opacity 1s ease-in;
 }
 /* --------------------------------------------------------------------------------- */
 
