@@ -239,4 +239,6 @@ body {
 
 .buttonList-button:hover {
   background-color:#8b6d9c;
+  color: #fbf5ef;
+  border: 1px rgba(251, 245, 239, 0.5) solid;
 }

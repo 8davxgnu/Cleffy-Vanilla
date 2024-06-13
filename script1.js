@@ -189,10 +189,71 @@ function renderNotes() {
 
 
 
-function checkAnswers(answerArray) {
-  buttonA.addEventListener("click", () => (console.log("Hello")))
+
+
+
+
+
+
+
+
+function waitForUserInput(answerArray) {
+  
+  buttonA.addEventListener("click", checkAnswer.bind(buttonA, answerArray));
+  buttonB.addEventListener("click", checkAnswer.bind(buttonB, answerArray));
+  buttonC.addEventListener("click", checkAnswer.bind(buttonC, answerArray));
+  buttonD.addEventListener("click", checkAnswer.bind(buttonD, answerArray));
+  buttonE.addEventListener("click", checkAnswer.bind(buttonE, answerArray));
+  buttonF.addEventListener("click", checkAnswer.bind(buttonF, answerArray));
+  buttonG.addEventListener("click", checkAnswer.bind(buttonG, answerArray));
+
 }
 
+
+
+
+
+
+
+
+
+let currentNoteIndex = 0;
+let answerArrayLength = 4;
+
+function checkAnswer(answerArray) {
+
+  console.log(currentNoteIndex);
+  if (this.textContent == answerArray[currentNoteIndex]) {
+    console.log("CORRECT!");
+    
+    console.log(answerArray);
+
+    
+    
+  }
+  else {
+    console.log("WRONG!");
+    
+    console.log(answerArray);
+  }
+
+currentNoteIndex++;
+
+
+
+// Reset CurrentNoteIndex once user has submitted answer for each note.
+if (currentNoteIndex >= answerArrayLength) {
+  currentNoteIndex = 0;
+
+  // Delete rendered notes
+  while (baseMusicLine.firstChild) {
+    baseMusicLine.removeChild(baseMusicLine.firstChild);
+  }
+}
+
+
+
+}
 
 
 
@@ -203,8 +264,10 @@ function checkAnswers(answerArray) {
 // Main: 
 
 function trebleStart() {
+  // Render Notes:
   let answerArray = renderNotes();
-  checkAnswers(answerArray);
+  
+  waitForUserInput(answerArray);
 }
 
 
