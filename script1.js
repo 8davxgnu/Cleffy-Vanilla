@@ -220,15 +220,22 @@ function waitForUserInput(answerArray) {
 let currentNoteIndex = 0;
 let answerArrayLength = 4;
 
+
 function checkAnswer(answerArray) {
+  let note1 = document.getElementById('note1');
+  let note2 = document.getElementById('note2');
+  let note3 = document.getElementById('note3');
+  let note4 = document.getElementById('note4');
+  let currentRenderedNotes = [note1, note2, note3, note4];
 
   console.log(currentNoteIndex);
+
   if (this.textContent == answerArray[currentNoteIndex]) {
     console.log("CORRECT!");
     
     console.log(answerArray);
 
-    
+    currentRenderedNotes[currentNoteIndex].style.backgroundColor = 'green';
     
   }
   else {
@@ -245,10 +252,13 @@ currentNoteIndex++;
 if (currentNoteIndex >= answerArrayLength) {
   currentNoteIndex = 0;
 
+  
+
   // Delete rendered notes
   while (baseMusicLine.firstChild) {
     baseMusicLine.removeChild(baseMusicLine.firstChild);
   }
+  
 }
 
 
