@@ -1,5 +1,7 @@
 // Declare document elements needed:
 const baseMusicLine = document.getElementById('baseLine');
+const currentNoteShader = document.getElementById('currentNoteBg');
+let currentNoteShadingTransform = currentNoteShader.style.transform;
 
 const buttons = {
   "A": document.getElementById("noteA"),
@@ -145,43 +147,62 @@ function checkAnswer() {
   let note4 = document.getElementById('note4');
   let currentRenderedNotes = [note1, note2, note3, note4];
 
-  console.log(currentNoteIndex);
+  // console.log(currentNoteIndex);
 
+
+  // Check if correct Note Button Pressed:
   if (this.textContent == answerArray[currentNoteIndex]) {
     console.log("CORRECT!");
-    console.log(answerArray);
+    // console.log(answerArray);
 
     currentRenderedNotes[currentNoteIndex].style.backgroundColor = 'green';
     
   } else {
     console.log("WRONG!");
-    console.log(answerArray);
+    // console.log(answerArray);
 
     currentRenderedNotes[currentNoteIndex].style.backgroundColor = 'red';
   }
 
+
+  // Increment currentNote counter to check for next available note:
   currentNoteIndex++;
 
-  // Reset CurrentNoteIndex once user has submitted answer for each note.
+
+
+  // Reset CurrentNoteIndex once user has submitted answer for each note and begin new iteration:
   if (currentNoteIndex >= answerArrayLength) {
+    // Reset Note Index Counter:
     currentNoteIndex = 0;
 
+    // Remove event listeners (so users cant modify currentNoteIndex during timeout)):
+    Object.keys(buttons).forEach(note => {
+      buttons[note].removeEventListener("click", checkAnswer);
+    });
+
+    setTimeout(()=>{
+      
     // Delete rendered notes
     while (baseMusicLine.firstChild) {
       baseMusicLine.removeChild(baseMusicLine.firstChild);
     }
 
-    // Remove event listeners
-    Object.keys(buttons).forEach(note => {
-      buttons[note].removeEventListener("click", checkAnswer);
-    });
-
+    // Render new iteration of notes
     renderNotes();
 
     // Re-add event listeners
     Object.keys(buttons).forEach(note => {
       buttons[note].addEventListener("click", checkAnswer);
     });
+
+    // Shift currentNoteBg back to start Position:
+    currentNoteShader.style.transform = `translate(calc(var(--note-spacing) * 2.5rem * ${currentNoteIndex + 1} - 2 * (var(--note-dimension)) + (var(--note-dimension) / 2)), 0)`;
+
+    }, 500);
+  }
+  else {
+    // Shift currentNote Shading:
+    currentNoteShader.style.transform = `translate(calc(var(--note-spacing) * 2.5rem * ${currentNoteIndex + 1} - 2 * (var(--note-dimension)) + (var(--note-dimension) / 2)), 0)`;
   }
 }
 
