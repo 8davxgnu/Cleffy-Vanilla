@@ -48,6 +48,7 @@ let noteKey = {
 
 const note_spacing = 4;
 
+let answerArray = [];
 
 
 // -----------------------------------------------------------------------------------------------------------
@@ -85,8 +86,8 @@ function renderNotes() {
 
 
   // Create Array with current iteration's correct Answers:
-  let answers = [noteKey[num1_noteVal], noteKey[num2_noteVal], noteKey[num3_noteVal],noteKey[num4_noteVal],];
-  console.log(answers);
+  answerArray = [noteKey[num1_noteVal], noteKey[num2_noteVal], noteKey[num3_noteVal],noteKey[num4_noteVal],];
+  console.log(answerArray);
 
 
   // Render and translate the Notes on the music lines:
@@ -183,7 +184,7 @@ function renderNotes() {
   }
 
 
-  return answers;
+  return answerArray;
 }
 
 
@@ -197,22 +198,15 @@ function renderNotes() {
 
 
 
-function waitForUserInput(answerArray) {
+
   
-  buttonA.addEventListener("click", checkAnswer.bind(buttonA, answerArray));
-  buttonB.addEventListener("click", checkAnswer.bind(buttonB, answerArray));
-  buttonC.addEventListener("click", checkAnswer.bind(buttonC, answerArray));
-  buttonD.addEventListener("click", checkAnswer.bind(buttonD, answerArray));
-  buttonE.addEventListener("click", checkAnswer.bind(buttonE, answerArray));
-  buttonF.addEventListener("click", checkAnswer.bind(buttonF, answerArray));
-  buttonG.addEventListener("click", checkAnswer.bind(buttonG, answerArray));
-
-}
-
-
-
-
-
+buttonA.addEventListener("click", checkAnswer.bind(buttonA, answerArray));
+buttonB.addEventListener("click", checkAnswer.bind(buttonB, answerArray));
+buttonC.addEventListener("click", checkAnswer.bind(buttonC, answerArray));
+buttonD.addEventListener("click", checkAnswer.bind(buttonD, answerArray));
+buttonE.addEventListener("click", checkAnswer.bind(buttonE, answerArray));
+buttonF.addEventListener("click", checkAnswer.bind(buttonF, answerArray));
+buttonG.addEventListener("click", checkAnswer.bind(buttonG, answerArray));
 
 
 
@@ -232,7 +226,6 @@ function checkAnswer(answerArray) {
 
   if (this.textContent == answerArray[currentNoteIndex]) {
     console.log("CORRECT!");
-    
     console.log(answerArray);
 
     currentRenderedNotes[currentNoteIndex].style.backgroundColor = 'green';
@@ -240,8 +233,9 @@ function checkAnswer(answerArray) {
   }
   else {
     console.log("WRONG!");
-    
     console.log(answerArray);
+
+    currentRenderedNotes[currentNoteIndex].style.backgroundColor = 'red';
   }
 
 currentNoteIndex++;
@@ -254,11 +248,13 @@ if (currentNoteIndex >= answerArrayLength) {
 
   
 
-  // Delete rendered notes
-  while (baseMusicLine.firstChild) {
-    baseMusicLine.removeChild(baseMusicLine.firstChild);
-  }
-  
+  setTimeout(() => {
+    // Delete rendered notes
+    while (baseMusicLine.firstChild) {
+      baseMusicLine.removeChild(baseMusicLine.firstChild);
+    }
+  }, 1000); // 1000 milliseconds = 1 second
+
 }
 
 
@@ -277,7 +273,6 @@ function trebleStart() {
   // Render Notes:
   let answerArray = renderNotes();
   
-  waitForUserInput(answerArray);
 }
 
 
