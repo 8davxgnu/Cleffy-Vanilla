@@ -259,3 +259,12 @@ body {
   color: #fbf5ef;
   border: 1px rgba(251, 245, 239, 0.5) solid;
 }
+
+/* ----------------------------------------------------- */
+#treble-cleff {
+  position: absolute;
+  height: inherit;
+  transform: translate(-2.5rem);
+}
+
+
