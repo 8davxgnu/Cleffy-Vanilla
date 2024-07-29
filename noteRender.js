@@ -24,10 +24,11 @@ let noteKey = {
   6 : "B"
 };
 
-const note_spacing = 4;
-let answerArray = [];
-let currentNoteIndex = 0;
+const note_spacing    = 4;
+let answerArray       = [];
+let currentNoteIndex  = 0;
 let answerArrayLength = 4;
+let array1            = [1,2,3,4,5];
 
 function renderNotes() {
   // Generate note nums:
@@ -50,7 +51,6 @@ function renderNotes() {
   for (let noteVal in noteKey) {
     if (noteVal == num1_noteVal) {
       // console.log(`Raw Note1 Value: ${note1_rawVal} | Note1: ${noteKey[noteVal]}`);
-
 
       // Determine # of lines and spaces to traverse:
       [num_of_spaces, num_of_lines] = [(note1_rawVal - (Math.floor(note1_rawVal / 2))), (Math.floor(note1_rawVal / 2))];
